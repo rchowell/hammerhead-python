@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+from typing import Union
+from datetime import date
+
 import httpx
 
 from ..types import activity_list_params
@@ -88,7 +91,7 @@ class ActivitiesResource(SyncAPIResource):
         *,
         page: int | Omit = omit,
         per_page: int | Omit = omit,
-        start_date: object | Omit = omit,
+        start_date: Union[str, date] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -226,7 +229,7 @@ class AsyncActivitiesResource(AsyncAPIResource):
         *,
         page: int | Omit = omit,
         per_page: int | Omit = omit,
-        start_date: object | Omit = omit,
+        start_date: Union[str, date] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
