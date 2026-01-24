@@ -12,6 +12,7 @@ from respx import MockRouter
 from hammerhead import Hammerhead, AsyncHammerhead
 from tests.utils import assert_matches_type
 from hammerhead.types import ActivityListResponse, ActivityRetrieveResponse
+from hammerhead._utils import parse_date
 from hammerhead._response import (
     BinaryAPIResponse,
     AsyncBinaryAPIResponse,
@@ -79,7 +80,7 @@ class TestActivities:
         activity = client.activities.list(
             page=1,
             per_page=1,
-            start_date="2025-05-31",
+            start_date=parse_date("2025-05-31"),
         )
         assert_matches_type(ActivityListResponse, activity, path=["response"])
 
@@ -215,7 +216,7 @@ class TestAsyncActivities:
         activity = await async_client.activities.list(
             page=1,
             per_page=1,
-            start_date="2025-05-31",
+            start_date=parse_date("2025-05-31"),
         )
         assert_matches_type(ActivityListResponse, activity, path=["response"])
 

@@ -10,7 +10,7 @@ __all__ = ["OAuthExchangeTokenResponse"]
 class OAuthExchangeTokenResponse(BaseModel):
     access_token: Optional[str] = None
 
-    expires_in: Optional[object] = None
+    expires_in: Optional[int] = None
 
     refresh_token: Optional[str] = None
 
