@@ -15,7 +15,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestWorkouts:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_delete(self, client: Hammerhead) -> None:
         workout = client.workouts.delete(
@@ -23,7 +23,7 @@ class TestWorkouts:
         )
         assert workout is None
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_delete(self, client: Hammerhead) -> None:
         response = client.workouts.with_raw_response.delete(
@@ -35,7 +35,7 @@ class TestWorkouts:
         workout = response.parse()
         assert workout is None
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_delete(self, client: Hammerhead) -> None:
         with client.workouts.with_streaming_response.delete(
@@ -49,7 +49,7 @@ class TestWorkouts:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_delete(self, client: Hammerhead) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `workout_id` but received ''"):
@@ -63,7 +63,7 @@ class TestAsyncWorkouts:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_delete(self, async_client: AsyncHammerhead) -> None:
         workout = await async_client.workouts.delete(
@@ -71,7 +71,7 @@ class TestAsyncWorkouts:
         )
         assert workout is None
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncHammerhead) -> None:
         response = await async_client.workouts.with_raw_response.delete(
@@ -83,7 +83,7 @@ class TestAsyncWorkouts:
         workout = await response.parse()
         assert workout is None
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncHammerhead) -> None:
         async with async_client.workouts.with_streaming_response.delete(
@@ -97,7 +97,7 @@ class TestAsyncWorkouts:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_delete(self, async_client: AsyncHammerhead) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `workout_id` but received ''"):
