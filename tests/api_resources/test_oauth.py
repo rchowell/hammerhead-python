@@ -19,7 +19,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestOAuth:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip(reason="Mock server doesn't properly handle redirects")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_authorize(self, client: Hammerhead) -> None:
         oauth = client.oauth.authorize(
@@ -31,7 +31,7 @@ class TestOAuth:
         )
         assert oauth is None
 
-    @pytest.mark.skip(reason="Mock server doesn't properly handle redirects")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_authorize(self, client: Hammerhead) -> None:
         response = client.oauth.with_raw_response.authorize(
@@ -47,7 +47,7 @@ class TestOAuth:
         oauth = response.parse()
         assert oauth is None
 
-    @pytest.mark.skip(reason="Mock server doesn't properly handle redirects")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_authorize(self, client: Hammerhead) -> None:
         with client.oauth.with_streaming_response.authorize(
@@ -164,7 +164,7 @@ class TestAsyncOAuth:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip(reason="Mock server doesn't properly handle redirects")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_authorize(self, async_client: AsyncHammerhead) -> None:
         oauth = await async_client.oauth.authorize(
@@ -176,7 +176,7 @@ class TestAsyncOAuth:
         )
         assert oauth is None
 
-    @pytest.mark.skip(reason="Mock server doesn't properly handle redirects")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_authorize(self, async_client: AsyncHammerhead) -> None:
         response = await async_client.oauth.with_raw_response.authorize(
@@ -192,7 +192,7 @@ class TestAsyncOAuth:
         oauth = await response.parse()
         assert oauth is None
 
-    @pytest.mark.skip(reason="Mock server doesn't properly handle redirects")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_authorize(self, async_client: AsyncHammerhead) -> None:
         async with async_client.oauth.with_streaming_response.authorize(
