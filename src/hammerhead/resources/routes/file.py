@@ -24,6 +24,8 @@ __all__ = ["FileResource", "AsyncFileResource"]
 
 
 class FileResource(SyncAPIResource):
+    """Endpoints related to user route management."""
+
     @cached_property
     def with_raw_response(self) -> FileResourceWithRawResponse:
         """
@@ -134,6 +136,8 @@ class FileResource(SyncAPIResource):
 
 
 class AsyncFileResource(AsyncAPIResource):
+    """Endpoints related to user route management."""
+
     @cached_property
     def with_raw_response(self) -> AsyncFileResourceWithRawResponse:
         """
