@@ -34,6 +34,8 @@ __all__ = ["ActivitiesResource", "AsyncActivitiesResource"]
 
 
 class ActivitiesResource(SyncAPIResource):
+    """Endpoints related to user activity data and syncing."""
+
     @cached_property
     def with_raw_response(self) -> ActivitiesResourceWithRawResponse:
         """
@@ -172,6 +174,8 @@ class ActivitiesResource(SyncAPIResource):
 
 
 class AsyncActivitiesResource(AsyncAPIResource):
+    """Endpoints related to user activity data and syncing."""
+
     @cached_property
     def with_raw_response(self) -> AsyncActivitiesResourceWithRawResponse:
         """

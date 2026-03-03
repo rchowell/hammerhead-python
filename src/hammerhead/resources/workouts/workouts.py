@@ -27,8 +27,11 @@ __all__ = ["WorkoutsResource", "AsyncWorkoutsResource"]
 
 
 class WorkoutsResource(SyncAPIResource):
+    """Endpoints related to user workout management."""
+
     @cached_property
     def file(self) -> FileResource:
+        """Endpoints related to user workout management."""
         return FileResource(self._client)
 
     @cached_property
@@ -87,8 +90,11 @@ class WorkoutsResource(SyncAPIResource):
 
 
 class AsyncWorkoutsResource(AsyncAPIResource):
+    """Endpoints related to user workout management."""
+
     @cached_property
     def file(self) -> AsyncFileResource:
+        """Endpoints related to user workout management."""
         return AsyncFileResource(self._client)
 
     @cached_property
@@ -156,6 +162,7 @@ class WorkoutsResourceWithRawResponse:
 
     @cached_property
     def file(self) -> FileResourceWithRawResponse:
+        """Endpoints related to user workout management."""
         return FileResourceWithRawResponse(self._workouts.file)
 
 
@@ -169,6 +176,7 @@ class AsyncWorkoutsResourceWithRawResponse:
 
     @cached_property
     def file(self) -> AsyncFileResourceWithRawResponse:
+        """Endpoints related to user workout management."""
         return AsyncFileResourceWithRawResponse(self._workouts.file)
 
 
@@ -182,6 +190,7 @@ class WorkoutsResourceWithStreamingResponse:
 
     @cached_property
     def file(self) -> FileResourceWithStreamingResponse:
+        """Endpoints related to user workout management."""
         return FileResourceWithStreamingResponse(self._workouts.file)
 
 
@@ -195,4 +204,5 @@ class AsyncWorkoutsResourceWithStreamingResponse:
 
     @cached_property
     def file(self) -> AsyncFileResourceWithStreamingResponse:
+        """Endpoints related to user workout management."""
         return AsyncFileResourceWithStreamingResponse(self._workouts.file)

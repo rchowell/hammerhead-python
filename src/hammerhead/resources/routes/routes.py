@@ -30,8 +30,11 @@ __all__ = ["RoutesResource", "AsyncRoutesResource"]
 
 
 class RoutesResource(SyncAPIResource):
+    """Endpoints related to user route management."""
+
     @cached_property
     def file(self) -> FileResource:
+        """Endpoints related to user route management."""
         return FileResource(self._client)
 
     @cached_property
@@ -136,8 +139,11 @@ class RoutesResource(SyncAPIResource):
 
 
 class AsyncRoutesResource(AsyncAPIResource):
+    """Endpoints related to user route management."""
+
     @cached_property
     def file(self) -> AsyncFileResource:
+        """Endpoints related to user route management."""
         return AsyncFileResource(self._client)
 
     @cached_property
@@ -254,6 +260,7 @@ class RoutesResourceWithRawResponse:
 
     @cached_property
     def file(self) -> FileResourceWithRawResponse:
+        """Endpoints related to user route management."""
         return FileResourceWithRawResponse(self._routes.file)
 
 
@@ -270,6 +277,7 @@ class AsyncRoutesResourceWithRawResponse:
 
     @cached_property
     def file(self) -> AsyncFileResourceWithRawResponse:
+        """Endpoints related to user route management."""
         return AsyncFileResourceWithRawResponse(self._routes.file)
 
 
@@ -286,6 +294,7 @@ class RoutesResourceWithStreamingResponse:
 
     @cached_property
     def file(self) -> FileResourceWithStreamingResponse:
+        """Endpoints related to user route management."""
         return FileResourceWithStreamingResponse(self._routes.file)
 
 
@@ -302,4 +311,5 @@ class AsyncRoutesResourceWithStreamingResponse:
 
     @cached_property
     def file(self) -> AsyncFileResourceWithStreamingResponse:
+        """Endpoints related to user route management."""
         return AsyncFileResourceWithStreamingResponse(self._routes.file)
