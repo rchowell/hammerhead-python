@@ -28,7 +28,7 @@ class TestFile:
     def test_method_create_with_all_params(self, client: Hammerhead) -> None:
         file = client.workouts.file.create(
             planned_date="plannedDate",
-            file=b"raw file contents",
+            file=b"Example data",
         )
         assert_matches_type(Workout, file, path=["response"])
 
@@ -68,7 +68,7 @@ class TestFile:
         file = client.workouts.file.update(
             workout_id="workoutId",
             planned_date="plannedDate",
-            file=b"raw file contents",
+            file=b"Example data",
         )
         assert_matches_type(Workout, file, path=["response"])
 
@@ -123,7 +123,7 @@ class TestAsyncFile:
     async def test_method_create_with_all_params(self, async_client: AsyncHammerhead) -> None:
         file = await async_client.workouts.file.create(
             planned_date="plannedDate",
-            file=b"raw file contents",
+            file=b"Example data",
         )
         assert_matches_type(Workout, file, path=["response"])
 
@@ -163,7 +163,7 @@ class TestAsyncFile:
         file = await async_client.workouts.file.update(
             workout_id="workoutId",
             planned_date="plannedDate",
-            file=b"raw file contents",
+            file=b"Example data",
         )
         assert_matches_type(Workout, file, path=["response"])
 

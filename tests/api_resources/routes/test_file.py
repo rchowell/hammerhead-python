@@ -27,7 +27,7 @@ class TestFile:
     @parametrize
     def test_method_create_with_all_params(self, client: Hammerhead) -> None:
         file = client.routes.file.create(
-            file=b"raw file contents",
+            file=b"Example data",
         )
         assert_matches_type(Route, file, path=["response"])
 
@@ -66,7 +66,7 @@ class TestFile:
     def test_method_update_with_all_params(self, client: Hammerhead) -> None:
         file = client.routes.file.update(
             route_id="routeId",
-            file=b"raw file contents",
+            file=b"Example data",
         )
         assert_matches_type(Route, file, path=["response"])
 
@@ -120,7 +120,7 @@ class TestAsyncFile:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncHammerhead) -> None:
         file = await async_client.routes.file.create(
-            file=b"raw file contents",
+            file=b"Example data",
         )
         assert_matches_type(Route, file, path=["response"])
 
@@ -159,7 +159,7 @@ class TestAsyncFile:
     async def test_method_update_with_all_params(self, async_client: AsyncHammerhead) -> None:
         file = await async_client.routes.file.update(
             route_id="routeId",
-            file=b"raw file contents",
+            file=b"Example data",
         )
         assert_matches_type(Route, file, path=["response"])
 
