@@ -13,6 +13,7 @@ from .file import (
     AsyncFileResourceWithStreamingResponse,
 )
 from ..._types import Body, Query, Headers, NoneType, NotGiven, not_given
+from ..._utils import path_template
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -81,7 +82,7 @@ class WorkoutsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `workout_id` but received {workout_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
-            f"/workouts/{workout_id}",
+            path_template("/workouts/{workout_id}", workout_id=workout_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -144,7 +145,7 @@ class AsyncWorkoutsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `workout_id` but received {workout_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
-            f"/workouts/{workout_id}",
+            path_template("/workouts/{workout_id}", workout_id=workout_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
