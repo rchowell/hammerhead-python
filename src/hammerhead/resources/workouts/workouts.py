@@ -13,6 +13,7 @@ from .file import (
     AsyncFileResourceWithStreamingResponse,
 )
 from ..._types import Body, Query, Headers, NoneType, NotGiven, not_given
+from ..._utils import path_template
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -27,8 +28,11 @@ __all__ = ["WorkoutsResource", "AsyncWorkoutsResource"]
 
 
 class WorkoutsResource(SyncAPIResource):
+    """Endpoints related to user workout management."""
+
     @cached_property
     def file(self) -> FileResource:
+        """Endpoints related to user workout management."""
         return FileResource(self._client)
 
     @cached_property
@@ -78,7 +82,7 @@ class WorkoutsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `workout_id` but received {workout_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
-            f"/workouts/{workout_id}",
+            path_template("/workouts/{workout_id}", workout_id=workout_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -87,8 +91,11 @@ class WorkoutsResource(SyncAPIResource):
 
 
 class AsyncWorkoutsResource(AsyncAPIResource):
+    """Endpoints related to user workout management."""
+
     @cached_property
     def file(self) -> AsyncFileResource:
+        """Endpoints related to user workout management."""
         return AsyncFileResource(self._client)
 
     @cached_property
@@ -138,7 +145,7 @@ class AsyncWorkoutsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `workout_id` but received {workout_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
-            f"/workouts/{workout_id}",
+            path_template("/workouts/{workout_id}", workout_id=workout_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -156,6 +163,7 @@ class WorkoutsResourceWithRawResponse:
 
     @cached_property
     def file(self) -> FileResourceWithRawResponse:
+        """Endpoints related to user workout management."""
         return FileResourceWithRawResponse(self._workouts.file)
 
 
@@ -169,6 +177,7 @@ class AsyncWorkoutsResourceWithRawResponse:
 
     @cached_property
     def file(self) -> AsyncFileResourceWithRawResponse:
+        """Endpoints related to user workout management."""
         return AsyncFileResourceWithRawResponse(self._workouts.file)
 
 
@@ -182,6 +191,7 @@ class WorkoutsResourceWithStreamingResponse:
 
     @cached_property
     def file(self) -> FileResourceWithStreamingResponse:
+        """Endpoints related to user workout management."""
         return FileResourceWithStreamingResponse(self._workouts.file)
 
 
@@ -195,4 +205,5 @@ class AsyncWorkoutsResourceWithStreamingResponse:
 
     @cached_property
     def file(self) -> AsyncFileResourceWithStreamingResponse:
+        """Endpoints related to user workout management."""
         return AsyncFileResourceWithStreamingResponse(self._workouts.file)

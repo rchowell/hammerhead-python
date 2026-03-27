@@ -7,7 +7,7 @@ from typing import Mapping, cast
 import httpx
 
 from ..._types import Body, Omit, Query, Headers, NotGiven, FileTypes, omit, not_given
-from ..._utils import extract_files, maybe_transform, deepcopy_minimal, async_maybe_transform
+from ..._utils import extract_files, path_template, maybe_transform, deepcopy_minimal, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -24,6 +24,8 @@ __all__ = ["FileResource", "AsyncFileResource"]
 
 
 class FileResource(SyncAPIResource):
+    """Endpoints related to user route management."""
+
     @cached_property
     def with_raw_response(self) -> FileResourceWithRawResponse:
         """
@@ -123,7 +125,7 @@ class FileResource(SyncAPIResource):
         # multipart/form-data; boundary=---abc--
         extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
         return self._put(
-            f"/routes/{route_id}/file",
+            path_template("/routes/{route_id}/file", route_id=route_id),
             body=maybe_transform(body, file_update_params.FileUpdateParams),
             files=files,
             options=make_request_options(
@@ -134,6 +136,8 @@ class FileResource(SyncAPIResource):
 
 
 class AsyncFileResource(AsyncAPIResource):
+    """Endpoints related to user route management."""
+
     @cached_property
     def with_raw_response(self) -> AsyncFileResourceWithRawResponse:
         """
@@ -233,7 +237,7 @@ class AsyncFileResource(AsyncAPIResource):
         # multipart/form-data; boundary=---abc--
         extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
         return await self._put(
-            f"/routes/{route_id}/file",
+            path_template("/routes/{route_id}/file", route_id=route_id),
             body=await async_maybe_transform(body, file_update_params.FileUpdateParams),
             files=files,
             options=make_request_options(

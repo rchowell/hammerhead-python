@@ -9,7 +9,7 @@ import httpx
 
 from ..types import activity_list_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -34,6 +34,8 @@ __all__ = ["ActivitiesResource", "AsyncActivitiesResource"]
 
 
 class ActivitiesResource(SyncAPIResource):
+    """Endpoints related to user activity data and syncing."""
+
     @cached_property
     def with_raw_response(self) -> ActivitiesResourceWithRawResponse:
         """
@@ -79,7 +81,7 @@ class ActivitiesResource(SyncAPIResource):
         if not activity_id:
             raise ValueError(f"Expected a non-empty value for `activity_id` but received {activity_id!r}")
         return self._get(
-            f"/activities/{activity_id}",
+            path_template("/activities/{activity_id}", activity_id=activity_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -163,7 +165,7 @@ class ActivitiesResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `activity_id` but received {activity_id!r}")
         extra_headers = {"Accept": "application/vnd.ant.fit", **(extra_headers or {})}
         return self._get(
-            f"/activities/{activity_id}/file",
+            path_template("/activities/{activity_id}/file", activity_id=activity_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -172,6 +174,8 @@ class ActivitiesResource(SyncAPIResource):
 
 
 class AsyncActivitiesResource(AsyncAPIResource):
+    """Endpoints related to user activity data and syncing."""
+
     @cached_property
     def with_raw_response(self) -> AsyncActivitiesResourceWithRawResponse:
         """
@@ -217,7 +221,7 @@ class AsyncActivitiesResource(AsyncAPIResource):
         if not activity_id:
             raise ValueError(f"Expected a non-empty value for `activity_id` but received {activity_id!r}")
         return await self._get(
-            f"/activities/{activity_id}",
+            path_template("/activities/{activity_id}", activity_id=activity_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -301,7 +305,7 @@ class AsyncActivitiesResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `activity_id` but received {activity_id!r}")
         extra_headers = {"Accept": "application/vnd.ant.fit", **(extra_headers or {})}
         return await self._get(
-            f"/activities/{activity_id}/file",
+            path_template("/activities/{activity_id}/file", activity_id=activity_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

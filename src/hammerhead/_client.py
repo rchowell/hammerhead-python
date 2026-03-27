@@ -104,24 +104,64 @@ class Hammerhead(SyncAPIClient):
 
     @cached_property
     def oauth(self) -> OAuthResource:
+        """
+        Access to our API is authorized using the [OAuth 2.0](https://datatracker.ietf.org/doc/html/rfc6749) authorization framework.
+
+        To get started, you will need to create an API Client and obtain a client ID and secret.
+
+        Users can then be authorized by providing a link to our authorization url:
+
+        ```html
+        <a href="https://api.hammerhead.io/v1/auth/oauth/authorize
+          ?client_id={client_id}
+          &redirect_uri={redirect_uri}
+          &response_type=code
+          &scope={scope}
+          &state={state}"
+        />
+        ```
+
+        This will redirect users to our OAuth Confirm page where users will be allowed to
+        select a subset of scopes from the ones requested. Scopes should be space delimited.
+
+        On deny, users will be sent to the `redirect_uri` with an error set:
+
+        ```
+        {redirect_uri}?error=access_denied&state={state}
+        ```
+
+        On accept, users accounts will be linked with the selected scopes and will be sent to
+        the `redirect_uri` with the auth code and state:
+
+        ```
+        {redirect_uri}?code={code}&state={state}
+        ```
+
+        Once code and state are received, they can be exchanged for an access token using the `/oauth/token` endpoint.
+
+        This bearer token can then be used to access our API endpoints.
+        """
         from .resources.oauth import OAuthResource
 
         return OAuthResource(self)
 
     @cached_property
     def activities(self) -> ActivitiesResource:
+        """Endpoints related to user activity data and syncing."""
         from .resources.activities import ActivitiesResource
 
         return ActivitiesResource(self)
 
     @cached_property
     def routes(self) -> RoutesResource:
+        """Endpoints related to user route management."""
         from .resources.routes import RoutesResource
 
         return RoutesResource(self)
 
     @cached_property
     def workouts(self) -> WorkoutsResource:
+        """Endpoints related to user workout management."""
         from .resources.workouts import WorkoutsResource
 
         return WorkoutsResource(self)
@@ -306,24 +346,64 @@ class AsyncHammerhead(AsyncAPIClient):
 
     @cached_property
     def oauth(self) -> AsyncOAuthResource:
+        """
+        Access to our API is authorized using the [OAuth 2.0](https://datatracker.ietf.org/doc/html/rfc6749) authorization framework.
+
+        To get started, you will need to create an API Client and obtain a client ID and secret.
+
+        Users can then be authorized by providing a link to our authorization url:
+
+        ```html
+        <a href="https://api.hammerhead.io/v1/auth/oauth/authorize
+          ?client_id={client_id}
+          &redirect_uri={redirect_uri}
+          &response_type=code
+          &scope={scope}
+          &state={state}"
+        />
+        ```
+
+        This will redirect users to our OAuth Confirm page where users will be allowed to
+        select a subset of scopes from the ones requested. Scopes should be space delimited.
+
+        On deny, users will be sent to the `redirect_uri` with an error set:
+
+        ```
+        {redirect_uri}?error=access_denied&state={state}
+        ```
+
+        On accept, users accounts will be linked with the selected scopes and will be sent to
+        the `redirect_uri` with the auth code and state:
+
+        ```
+        {redirect_uri}?code={code}&state={state}
+        ```
+
+        Once code and state are received, they can be exchanged for an access token using the `/oauth/token` endpoint.
+
+        This bearer token can then be used to access our API endpoints.
+        """
         from .resources.oauth import AsyncOAuthResource
 
         return AsyncOAuthResource(self)
 
     @cached_property
     def activities(self) -> AsyncActivitiesResource:
+        """Endpoints related to user activity data and syncing."""
         from .resources.activities import AsyncActivitiesResource
 
         return AsyncActivitiesResource(self)
 
     @cached_property
     def routes(self) -> AsyncRoutesResource:
+        """Endpoints related to user route management."""
         from .resources.routes import AsyncRoutesResource
 
         return AsyncRoutesResource(self)
 
     @cached_property
     def workouts(self) -> AsyncWorkoutsResource:
+        """Endpoints related to user workout management."""
         from .resources.workouts import AsyncWorkoutsResource
 
         return AsyncWorkoutsResource(self)
@@ -462,24 +542,64 @@ class HammerheadWithRawResponse:
 
     @cached_property
     def oauth(self) -> oauth.OAuthResourceWithRawResponse:
+        """
+        Access to our API is authorized using the [OAuth 2.0](https://datatracker.ietf.org/doc/html/rfc6749) authorization framework.
+
+        To get started, you will need to create an API Client and obtain a client ID and secret.
+
+        Users can then be authorized by providing a link to our authorization url:
+
+        ```html
+        <a href="https://api.hammerhead.io/v1/auth/oauth/authorize
+          ?client_id={client_id}
+          &redirect_uri={redirect_uri}
+          &response_type=code
+          &scope={scope}
+          &state={state}"
+        />
+        ```
+
+        This will redirect users to our OAuth Confirm page where users will be allowed to
+        select a subset of scopes from the ones requested. Scopes should be space delimited.
+
+        On deny, users will be sent to the `redirect_uri` with an error set:
+
+        ```
+        {redirect_uri}?error=access_denied&state={state}
+        ```
+
+        On accept, users accounts will be linked with the selected scopes and will be sent to
+        the `redirect_uri` with the auth code and state:
+
+        ```
+        {redirect_uri}?code={code}&state={state}
+        ```
+
+        Once code and state are received, they can be exchanged for an access token using the `/oauth/token` endpoint.
+
+        This bearer token can then be used to access our API endpoints.
+        """
         from .resources.oauth import OAuthResourceWithRawResponse
 
         return OAuthResourceWithRawResponse(self._client.oauth)
 
     @cached_property
     def activities(self) -> activities.ActivitiesResourceWithRawResponse:
+        """Endpoints related to user activity data and syncing."""
         from .resources.activities import ActivitiesResourceWithRawResponse
 
         return ActivitiesResourceWithRawResponse(self._client.activities)
 
     @cached_property
     def routes(self) -> routes.RoutesResourceWithRawResponse:
+        """Endpoints related to user route management."""
         from .resources.routes import RoutesResourceWithRawResponse
 
         return RoutesResourceWithRawResponse(self._client.routes)
 
     @cached_property
     def workouts(self) -> workouts.WorkoutsResourceWithRawResponse:
+        """Endpoints related to user workout management."""
         from .resources.workouts import WorkoutsResourceWithRawResponse
 
         return WorkoutsResourceWithRawResponse(self._client.workouts)
@@ -493,24 +613,64 @@ class AsyncHammerheadWithRawResponse:
 
     @cached_property
     def oauth(self) -> oauth.AsyncOAuthResourceWithRawResponse:
+        """
+        Access to our API is authorized using the [OAuth 2.0](https://datatracker.ietf.org/doc/html/rfc6749) authorization framework.
+
+        To get started, you will need to create an API Client and obtain a client ID and secret.
+
+        Users can then be authorized by providing a link to our authorization url:
+
+        ```html
+        <a href="https://api.hammerhead.io/v1/auth/oauth/authorize
+          ?client_id={client_id}
+          &redirect_uri={redirect_uri}
+          &response_type=code
+          &scope={scope}
+          &state={state}"
+        />
+        ```
+
+        This will redirect users to our OAuth Confirm page where users will be allowed to
+        select a subset of scopes from the ones requested. Scopes should be space delimited.
+
+        On deny, users will be sent to the `redirect_uri` with an error set:
+
+        ```
+        {redirect_uri}?error=access_denied&state={state}
+        ```
+
+        On accept, users accounts will be linked with the selected scopes and will be sent to
+        the `redirect_uri` with the auth code and state:
+
+        ```
+        {redirect_uri}?code={code}&state={state}
+        ```
+
+        Once code and state are received, they can be exchanged for an access token using the `/oauth/token` endpoint.
+
+        This bearer token can then be used to access our API endpoints.
+        """
         from .resources.oauth import AsyncOAuthResourceWithRawResponse
 
         return AsyncOAuthResourceWithRawResponse(self._client.oauth)
 
     @cached_property
     def activities(self) -> activities.AsyncActivitiesResourceWithRawResponse:
+        """Endpoints related to user activity data and syncing."""
         from .resources.activities import AsyncActivitiesResourceWithRawResponse
 
         return AsyncActivitiesResourceWithRawResponse(self._client.activities)
 
     @cached_property
     def routes(self) -> routes.AsyncRoutesResourceWithRawResponse:
+        """Endpoints related to user route management."""
         from .resources.routes import AsyncRoutesResourceWithRawResponse
 
         return AsyncRoutesResourceWithRawResponse(self._client.routes)
 
     @cached_property
     def workouts(self) -> workouts.AsyncWorkoutsResourceWithRawResponse:
+        """Endpoints related to user workout management."""
         from .resources.workouts import AsyncWorkoutsResourceWithRawResponse
 
         return AsyncWorkoutsResourceWithRawResponse(self._client.workouts)
@@ -524,24 +684,64 @@ class HammerheadWithStreamedResponse:
 
     @cached_property
     def oauth(self) -> oauth.OAuthResourceWithStreamingResponse:
+        """
+        Access to our API is authorized using the [OAuth 2.0](https://datatracker.ietf.org/doc/html/rfc6749) authorization framework.
+
+        To get started, you will need to create an API Client and obtain a client ID and secret.
+
+        Users can then be authorized by providing a link to our authorization url:
+
+        ```html
+        <a href="https://api.hammerhead.io/v1/auth/oauth/authorize
+          ?client_id={client_id}
+          &redirect_uri={redirect_uri}
+          &response_type=code
+          &scope={scope}
+          &state={state}"
+        />
+        ```
+
+        This will redirect users to our OAuth Confirm page where users will be allowed to
+        select a subset of scopes from the ones requested. Scopes should be space delimited.
+
+        On deny, users will be sent to the `redirect_uri` with an error set:
+
+        ```
+        {redirect_uri}?error=access_denied&state={state}
+        ```
+
+        On accept, users accounts will be linked with the selected scopes and will be sent to
+        the `redirect_uri` with the auth code and state:
+
+        ```
+        {redirect_uri}?code={code}&state={state}
+        ```
+
+        Once code and state are received, they can be exchanged for an access token using the `/oauth/token` endpoint.
+
+        This bearer token can then be used to access our API endpoints.
+        """
         from .resources.oauth import OAuthResourceWithStreamingResponse
 
         return OAuthResourceWithStreamingResponse(self._client.oauth)
 
     @cached_property
     def activities(self) -> activities.ActivitiesResourceWithStreamingResponse:
+        """Endpoints related to user activity data and syncing."""
         from .resources.activities import ActivitiesResourceWithStreamingResponse
 
         return ActivitiesResourceWithStreamingResponse(self._client.activities)
 
     @cached_property
     def routes(self) -> routes.RoutesResourceWithStreamingResponse:
+        """Endpoints related to user route management."""
         from .resources.routes import RoutesResourceWithStreamingResponse
 
         return RoutesResourceWithStreamingResponse(self._client.routes)
 
     @cached_property
     def workouts(self) -> workouts.WorkoutsResourceWithStreamingResponse:
+        """Endpoints related to user workout management."""
         from .resources.workouts import WorkoutsResourceWithStreamingResponse
 
         return WorkoutsResourceWithStreamingResponse(self._client.workouts)
@@ -555,24 +755,64 @@ class AsyncHammerheadWithStreamedResponse:
 
     @cached_property
     def oauth(self) -> oauth.AsyncOAuthResourceWithStreamingResponse:
+        """
+        Access to our API is authorized using the [OAuth 2.0](https://datatracker.ietf.org/doc/html/rfc6749) authorization framework.
+
+        To get started, you will need to create an API Client and obtain a client ID and secret.
+
+        Users can then be authorized by providing a link to our authorization url:
+
+        ```html
+        <a href="https://api.hammerhead.io/v1/auth/oauth/authorize
+          ?client_id={client_id}
+          &redirect_uri={redirect_uri}
+          &response_type=code
+          &scope={scope}
+          &state={state}"
+        />
+        ```
+
+        This will redirect users to our OAuth Confirm page where users will be allowed to
+        select a subset of scopes from the ones requested. Scopes should be space delimited.
+
+        On deny, users will be sent to the `redirect_uri` with an error set:
+
+        ```
+        {redirect_uri}?error=access_denied&state={state}
+        ```
+
+        On accept, users accounts will be linked with the selected scopes and will be sent to
+        the `redirect_uri` with the auth code and state:
+
+        ```
+        {redirect_uri}?code={code}&state={state}
+        ```
+
+        Once code and state are received, they can be exchanged for an access token using the `/oauth/token` endpoint.
+
+        This bearer token can then be used to access our API endpoints.
+        """
         from .resources.oauth import AsyncOAuthResourceWithStreamingResponse
 
         return AsyncOAuthResourceWithStreamingResponse(self._client.oauth)
 
     @cached_property
     def activities(self) -> activities.AsyncActivitiesResourceWithStreamingResponse:
+        """Endpoints related to user activity data and syncing."""
         from .resources.activities import AsyncActivitiesResourceWithStreamingResponse
 
         return AsyncActivitiesResourceWithStreamingResponse(self._client.activities)
 
     @cached_property
     def routes(self) -> routes.AsyncRoutesResourceWithStreamingResponse:
+        """Endpoints related to user route management."""
         from .resources.routes import AsyncRoutesResourceWithStreamingResponse
 
         return AsyncRoutesResourceWithStreamingResponse(self._client.routes)
 
     @cached_property
     def workouts(self) -> workouts.AsyncWorkoutsResourceWithStreamingResponse:
+        """Endpoints related to user workout management."""
         from .resources.workouts import AsyncWorkoutsResourceWithStreamingResponse
 
         return AsyncWorkoutsResourceWithStreamingResponse(self._client.workouts)
